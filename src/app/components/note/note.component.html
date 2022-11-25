@@ -1,0 +1,16 @@
+<div class="note">
+  <div class="dropNote" (click)="dropItem()"></div>
+  <img src="assets/edit-icon.png" alt="edit-icon" class="editNote" (click)="editNote()">
+  <p class="text">{{(note.text | removeTags)}}</p>
+  <p class="tag">{{note.tag}}</p>
+</div>
+
+<div class="modal-wrapper" *ngIf="isEdit">
+  <div class="note-edit" >
+    <h1>Редактирование</h1>
+    <textarea cols="30" rows="8" [(ngModel)]="inputEditNote.text" maxlength="254"></textarea>
+    <input  type="button" value="Сохранить" (click)="saveChanges()">
+    <p class="tag">{{inputEditNote.text | showTags}}</p>
+  </div>
+  <div class="overlay" (click)="closeModal()"></div>
+</div>

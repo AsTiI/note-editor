@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Note Editor</h1>
+
+  <div class="createNote">
+    <textarea cols="30" rows="8" [(ngModel)]="inputValue" maxlength="254"></textarea>
+    <input type="button" value="Создать" (click)="addNote()">
+  </div>
+  <select name="tags" [(ngModel)]="search">
+    <option value=""></option>
+    <option *ngFor="let tag of tags" [value]="tag">{{tag}}</option>
+  </select>
+  <div class="notes">
+    <app-note *ngFor="let item of (notes | filter:search)" [note]="item"></app-note>
+
+  </div>
+</div>
